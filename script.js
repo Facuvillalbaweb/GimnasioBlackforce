@@ -1,3 +1,35 @@
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    
+    // Asegurarse de que el preloader se muestre por lo menos 1.5 segundos
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        // Eliminar el preloader del DOM después de la transición para que no interfiera
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 800); // Coincide con la duración de la transición en CSS
+    }, 1500);
+});
+
+// Cookie Banner
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.querySelector('.cookie-banner');
+    const acceptButton = cookieBanner.querySelector('.btn');
+
+    // Retrasar la aparición del banner de cookies
+    setTimeout(() => {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            cookieBanner.classList.add('visible');
+        }
+    }, 2500); // Aparece después de que el preloader se ha ido
+
+    acceptButton.addEventListener('click', () => {
+        cookieBanner.classList.remove('visible');
+        localStorage.setItem('cookiesAccepted', 'true');
+    });
+});
+
 // Navegación móvil
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
