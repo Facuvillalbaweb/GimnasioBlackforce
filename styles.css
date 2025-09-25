@@ -372,6 +372,14 @@ img {
     border-color: var(--accent-green);
 }
 
+.service-icon i {
+    display: inline-block; /* Asegura que la animación funcione */
+}
+
+.service-card:hover .service-icon i {
+    animation: jiggle 0.4s ease-in-out;
+}
+
 .service-icon {
     width: 70px;
     height: 70px;
